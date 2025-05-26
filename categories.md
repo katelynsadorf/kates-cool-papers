@@ -8,7 +8,8 @@ permalink: /categories/
   {% for category in site.categories %}
     {% assign category_name = category | first %}
     {% assign category_posts = category | last %}
-    <a href="{{ '/categories/' | append: category_name | downcase | relative_url }}" class="category-tile-link">
+    {% assign category_page = site.categories | where: 'category', category_name | first %}
+    <a href="{{ category_page.url | relative_url }}" class="category-tile-link">
       <div class="category-tile">
         <h2 class="category-title">{{ category_name | capitalize }}</h2>
         <div class="post-count">
