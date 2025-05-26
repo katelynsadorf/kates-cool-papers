@@ -32,6 +32,12 @@ collections:
   categories:
     output: true
     permalink: /categories/:name/
+    title: Categories
+    description: "Browse all categories"
+    output: true
+
+# Collections directory
+collections_dir: .
 
 plugins:
   - jekyll-feed
