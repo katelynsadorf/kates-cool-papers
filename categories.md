@@ -4,6 +4,13 @@ title: Categories
 permalink: /categories/
 ---
 
+<p>Number of category docs: {{ site.collections.categories.docs | size }}</p>
+<ul>
+  {% for cat_doc in site.collections.categories.docs %}
+    <li>{{ cat_doc.path }}</li>
+  {% endfor %}
+</ul>
+
 <div class="categories-grid">
   {% comment %}
     Iterate through documents in the 'categories' collection (files in _categories folder).

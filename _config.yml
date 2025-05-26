@@ -26,14 +26,9 @@ external:
 
 # Optional: Enable categories/tags
 collections:
-  posts:
-    output: true
-    permalink: /:categories/:title/
   categories:
     output: true
     permalink: /categories/:name/
-    title: Categories
-    description: "Browse all categories"
 
 # Collections directory
 collections_dir: .
