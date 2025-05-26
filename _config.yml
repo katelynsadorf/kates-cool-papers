@@ -5,6 +5,9 @@ permalink: /:title/
 lang: "en"
 excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
+excerpt:              # extracts the first paragraph as excerpt
+  separator: "\n\n\n"  # paragraph separator
+  categories: []        # empty array means all categories
 
 # Layout
 show_excerpts: true
@@ -54,5 +57,10 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
 
+# Pagination settings
 paginate: 5
 paginate_path: "/page:num/"
+
+# Ensure posts are included in the site
+include:
+  - _posts
