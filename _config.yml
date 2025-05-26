@@ -12,6 +12,9 @@ show_frame: true
 show_sidebar: false
 minimal: false
 
+# Enable all default collections
+defaults: []
+
 # Menu
 navigation:
   - {file: "index.html", title: "Home"}
@@ -34,6 +37,18 @@ collections:
     permalink: /categories/:name/
     title: Categories
     description: "Browse all categories"
+    enabled: true
+    sort_by: title
+    sort_order: asc
+
+# Category pages
+defaults:
+  - scope:
+      path: ""
+      type: categories
+    values:
+      layout: category_posts
+      show_excerpts: true
 
 plugins:
   - jekyll-feed
