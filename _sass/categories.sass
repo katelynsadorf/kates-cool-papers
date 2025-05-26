@@ -1,0 +1,65 @@
+// Categories Grid Layout
+.categories-grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  gap: 2rem
+  margin: 2rem 0
+
+  // Category Tile Styling
+  .category-tile
+    background: lighten($dark, 75%)
+    border-radius: 8px
+    padding: 1.5rem
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    transition: transform 0.2s ease, box-shadow 0.2s ease
+
+    &:hover
+      transform: translateY(-4px)
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1)
+
+  // Category Title Styling
+  .category-title
+    color: $theme
+    margin-top: 0
+    padding-bottom: 0.5rem
+    border-bottom: 2px solid $border
+    font-size: 1.5rem
+
+  // Category Posts List
+  .category-posts
+    list-style: none
+    padding: 0
+    margin: 1rem 0 0
+
+    li
+      margin-bottom: 0.75rem
+      padding-bottom: 0.75rem
+      border-bottom: 1px solid $border
+
+      &:last-child
+        border-bottom: none
+        margin-bottom: 0
+        padding-bottom: 0
+
+    a
+      color: $text
+      text-decoration: none
+      transition: color 0.2s ease
+
+      &:hover
+        color: $theme
+
+  // Post date styling
+  .post-date
+    display: block
+    font-size: 0.85rem
+    color: lighten($text, 30%)
+    margin-top: 0.25rem
+
+// Responsive adjustments
+@media (max-width: 768px)
+  .categories-grid
+    grid-template-columns: 1fr
+
+    .category-tile
+      margin-bottom: 1.5rem

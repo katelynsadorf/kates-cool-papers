@@ -4,8 +4,6 @@ title: Categories
 permalink: /categories/
 ---
 
-<link rel="stylesheet" href="{{ '/assets/css/categories.css' | relative_url }}">
-
 <div class="categories-grid">
   {% for category in site.categories %}
     {% assign category_name = category[0] %}
