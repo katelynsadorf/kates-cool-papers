@@ -8,14 +8,6 @@ permalink: /categories/
   {% for category in site.categories %}
     {% assign category_name = category[0] %}
     {% assign posts = category[1] %}
-    {% assign category_page = nil %}
-    
-    {% for doc in site.categories.docs %}
-      {% if doc.category == category_name %}
-        {% assign category_page = doc %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
     
     <a href="{{ '/categories/' | append: category_name | downcase | relative_url }}" class="category-tile-link">
       <div class="category-tile">
