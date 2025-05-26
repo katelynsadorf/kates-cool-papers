@@ -15,6 +15,7 @@ minimal: false
 # Menu
 navigation:
   - {file: "index.html", title: "Home"}
+  - {file: "categories.md", title: "Categories"}
   - {file: "README.md", title: "About"}
 
 external:
