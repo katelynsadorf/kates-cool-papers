@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h1>Category: {{ page.title }}</h1>
+<h1>Category: {{ page.category | capitalize }}</h1>
 
 <div class="posts">
   {% for post in site.categories[page.category] %}
