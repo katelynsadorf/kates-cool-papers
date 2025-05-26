@@ -4,11 +4,29 @@ title: Categories
 permalink: /categories/
 ---
 
-<p>Debug Info:</p>
-<p>Categories Collection Size: {{ site.collections.categories.docs | size }}</p>
-<p>Categories Hash Keys: {{ site.categories | keys | join: ", " }}</p>
-
 <div class="categories-grid">
+  {% for cat_doc in site.collections.categories.docs %}
+    {% assign category_name = cat_doc.data.category %}
+    {% assign category_title = cat_doc.data.title %}
+    
+    {% comment %} Count posts in this category {% endcomment %}
+    {% assign post_count = 0 %}
+    {% for post in site.posts %}
+      {% if post.categories contains category_name %}
+        {% assign post_count = post_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    <a href="{{ cat_doc.url | relative_url }}" class="category-tile-link">
+      <div class="category-tile">
+        <h2 class="category-title">{{ category_title }}</h2>
+        <div class="post-count">
+          {{ post_count }} paper{% if post_count != 1 %}s{% endif %}
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
   {% for category in site.categories %}
     {% assign category_name = category[0] %}
     {% assign posts = category[1] %}
