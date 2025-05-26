@@ -1,60 +1,90 @@
 // Categories Grid Layout
 .categories-grid
   display: grid
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
   gap: 2rem
   margin: 2rem 0
+
+  // Category Tile Link
+  .category-tile-link
+    text-decoration: none
+    color: inherit
+    display: block
+    transition: transform 0.2s ease
+
+    &:hover
+      transform: translateY(-4px)
+      .category-tile
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1)
 
   // Category Tile Styling
   .category-tile
     background: lighten($dark, 75%)
     border-radius: 8px
     padding: 1.5rem
+    height: 100%
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
-    transition: transform 0.2s ease, box-shadow 0.2s ease
-
-    &:hover
-      transform: translateY(-4px)
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1)
+    transition: box-shadow 0.2s ease
+    position: relative
+    min-height: 120px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
 
   // Category Title Styling
   .category-title
     color: $theme
-    margin-top: 0
-    padding-bottom: 0.5rem
-    border-bottom: 2px solid $border
+    margin: 0 0 0.5rem 0
     font-size: 1.5rem
+    line-height: 1.2
+    
+  // Post Count Styling
+  .post-count
+    color: lighten($text, 30%)
+    font-size: 0.9rem
+    margin-top: 0.5rem
+    font-style: italic
+    text-align: right
+    position: absolute
+    bottom: 1.5rem
+    right: 1.5rem
 
-  // Category Posts List
-  .category-posts
-    list-style: none
-    padding: 0
-    margin: 1rem 0 0
-
-    li
-      margin-bottom: 0.75rem
-      padding-bottom: 0.75rem
+// Category page styling
+.category
+  .posts
+    max-width: 800px
+    margin: 0 auto
+    
+    .post
+      margin-bottom: 2rem
+      padding-bottom: 2rem
       border-bottom: 1px solid $border
-
+      
       &:last-child
         border-bottom: none
-        margin-bottom: 0
-        padding-bottom: 0
-
-    a
-      color: $text
-      text-decoration: none
-      transition: color 0.2s ease
-
-      &:hover
+      
+      h2
+        margin-bottom: 0.5rem
+        
+        a
+          color: $theme
+          text-decoration: none
+          
+          &:hover
+            text-decoration: underline
+      
+      .entry
+        margin: 1rem 0
+        
+      .read-more
+        display: inline-block
+        margin-top: 0.5rem
         color: $theme
-
-  // Post date styling
-  .post-date
-    display: block
-    font-size: 0.85rem
-    color: lighten($text, 30%)
-    margin-top: 0.25rem
+        text-decoration: none
+        font-weight: 500
+        
+        &:hover
+          text-decoration: underline
 
 // Responsive adjustments
 @media (max-width: 768px)
