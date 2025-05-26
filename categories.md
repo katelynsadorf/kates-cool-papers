@@ -4,35 +4,35 @@ title: Categories
 permalink: /categories/
 ---
 
-<p>Number of category docs: {{ site.collections.categories.docs | size }}</p>
-<ul>
-  {% for cat_doc in site.collections.categories.docs %}
-    <li>{{ cat_doc.path }}</li>
-  {% endfor %}
-</ul>
+<p>Debug Info:</p>
+<p>Categories Collection Size: {{ site.collections.categories.docs | size }}</p>
+<p>Categories Hash Keys: {{ site.categories | keys | join: ", " }}</p>
 
 <div class="categories-grid">
-  {% comment %}
-    Iterate through documents in the 'categories' collection (files in _categories folder).
-    Each 'cat_doc' is a page like _categories/bci.md.
-  {% endcomment %}
-  {% for cat_doc in site.collections.categories.docs %}
-    {% assign fm_category = cat_doc.data.category %}   {% comment %} e.g., "bci" from bci.md frontmatter {% endcomment %}
-    {% assign fm_title = cat_doc.data.title %}         {% comment %} e.g., "BCI (Brain-Computer Interfaces)" {% endcomment %}
+  {% for category in site.categories %}
+    {% assign category_name = category[0] %}
+    {% assign posts = category[1] %}
     
-    {% comment %} Count actual posts that belong to this category {% endcomment %}
-    {% assign count = 0 %}
-    {% for post in site.posts %}
-      {% if post.categories contains fm_category %}
-        {% assign count = count | plus: 1 %}
+    {% comment %} Find the category page to get the title {% endcomment %}
+    {% assign category_page = nil %}
+    {% for doc in site.categories.docs %}
+      {% if doc.category == category_name %}
+        {% assign category_page = doc %}
+        {% break %}
       {% endif %}
     {% endfor %}
-
-    <a href="{{ cat_doc.url | relative_url }}" class="category-tile-link">
+    
+    <a href="{{ '/categories/' | append: category_name | downcase | relative_url }}" class="category-tile-link">
       <div class="category-tile">
-        <h2 class="category-title">{{ fm_title }}</h2> {# Use title from _categories/xxx.md frontmatter #}
+        <h2 class="category-title">
+          {% if category_page %}
+            {{ category_page.title }}
+          {% else %}
+            {{ category_name | capitalize }}
+          {% endif %}
+        </h2>
         <div class="post-count">
-          {{ count }} paper{% if count != 1 %}s{% endif %}
+          {{ posts.size }} paper{% if posts.size != 1 %}s{% endif %}
         </div>
       </div>
     </a>

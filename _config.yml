@@ -24,14 +24,20 @@ external:
   - {title: LinkedIn, icon: linkedin, url: "https://www.linkedin.com/in/katelyn-sadorf-1b77a0194"}
   - {title: RSS, icon: rss, url: "/feed.xml"}
 
-# Optional: Enable categories/tags
+# Collections configuration
+collections_dir: .
+
+# Categories collection
 collections:
   categories:
     output: true
     permalink: /categories/:name/
-
-# Collections directory
-collections_dir: .
+    title: Categories
+    description: "Browse all categories"
 
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/page:num/"
